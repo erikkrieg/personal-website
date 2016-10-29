@@ -1,14 +1,21 @@
 {
-    "name": "erikkrieg.com",
-    "version": "1.0.0",
-    "description": "Erik Krieg's personal website.",
-    "main": "gulpfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Erik Krieg <erik.c.krieg@gmail.com>",
-    "license": "ISC",
-    "devDependencies": {
-        "gulp": "^3.9.1"
-    }
+  "name": "erikkrieg.com",
+  "version": "1.0.0",
+  "description": "Erik Krieg's personal website.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erik Krieg <erik.c.krieg@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  }
 }
