@@ -1,7 +1,4 @@
-const str = `wurld`;
-console.log(`Hello ${str}`);
+/* eslint-disable no-console */
 
-var test = true;
-if(test){
-	
-}
+const str = 'wurld';
+console.log(`Hello ${str}`);
