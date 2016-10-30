@@ -1,4 +1,9 @@
 * {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	@include box-sizing(inherit);
+}
+
+@include selection($color-white, $color-keppel);
+
+body {
+	@include box-sizing();
 }
