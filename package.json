@@ -27,6 +27,9 @@
     ]
   },
   "eslintConfig": {
+    "env": {
+      "browser": true
+    },
     "extends": "airbnb",
     "plugins": [
       "import"
