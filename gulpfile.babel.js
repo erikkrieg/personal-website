@@ -31,7 +31,6 @@ gulp.task('lint', () =>
 
 gulp.task('clean', () =>
     del([
-        paths.libDir,
         paths.distMainBundle,
     ])
 );
