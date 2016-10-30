@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 import gulp from 'gulp';
-// import babel from 'gulp-babel';
+import sass from 'ulp-sass';
 import eslint from 'gulp-eslint';
 import del from 'del';
 import webpack from 'webpack-stream';
