@@ -14,14 +14,15 @@ const paths = {
 const jsPaths = {
     source: `${paths.assets}/src/**/*.js`,
     entry: `${paths.assets}/src/entry.js`,
-    distBundle: `${paths.dist}/main-bundle.js?(.map)`,
+    dist: `${paths.dist}/src`,
+    distBundle: `${paths.dist}/src/main-bundle.js?(.map)`,
     gulpfile: 'gulpfile.babel.js',
     webpackfile: 'webpack.config.babel.js',
 
 };
 const sassPaths = {
     source: `${paths.assets}/scss/**/*.scss`,
-    dist: `${paths.dist}/styles`,
+    dist: `${paths.dist}/css`,
 };
 
 
@@ -54,7 +55,7 @@ gulp.task('js:clean', () =>
 gulp.task('js:main', ['js:lint', 'js:clean'], () =>
   gulp.src(jsPaths.entry)
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest(paths.dist))
+    .pipe(gulp.dest(jsPaths.dist))
 );
 
 
