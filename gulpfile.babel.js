@@ -13,7 +13,6 @@ const paths = {
     srcEntryPoint: 'src/entry.js',
     gulpFile: 'gulpfile.babel.js',
     webpackFile: 'webpack.config.babel.js',
-    libDir: 'lib',
     distDir: 'dist',
     distMainBundle: 'dist/main-bundle.js?(.map)',
 };
@@ -36,12 +35,6 @@ gulp.task('clean', () =>
         paths.distMainBundle,
     ])
 );
-
-// gulp.task('build', ['lint', 'clean'], () =>
-//     gulp.src(paths.allSrcJs)
-//         .pipe(babel())
-//         .pipe(gulp.dest(paths.libDir))
-// );
 
 gulp.task('main', ['lint', 'clean'], () =>
   gulp.src(paths.srcEntryPoint)
