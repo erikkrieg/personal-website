@@ -1,9 +1,64 @@
-* {
-	@include box-sizing(inherit);
-}
+@at-root {	
 
-@include selection($color-white, $color-keppel);
+	%heading {
+		font-family: $font-family-secondary;
+	}
 
-body {
-	@include box-sizing();
+	* {
+		@include box-sizing(inherit);
+	}
+
+	@include selection($color-white, $color-keppel);
+
+	body {
+		@include box-sizing();
+		font-size: $font-size-base;
+		font-family: $font-family-primary;
+	}
+
+	h1 {
+		@extend %heading;
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		@extend %heading;
+		font-size: 2.6rem;
+	}
+
+	h3 {
+		@extend %heading;
+		font-size: 2rem;
+	}
+
+	h4 {
+		@extend %heading;
+	}
+
+	h5 {
+		@extend %heading;
+	}
+
+	h6 {
+		@extend %heading;
+	}
+
+
+
+
+
+	.parallax-bg {
+        position: relative;
+        min-height: 800px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        background-attachment: fixed;
+
+        &--blasted {
+            background-image: url(../img/blasted.jpg);
+        }
+    }
+
+
 }
