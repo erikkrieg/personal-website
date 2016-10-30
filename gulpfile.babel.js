@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
 
 import gulp from 'gulp';
 import sass from 'gulp-sass';
@@ -9,18 +8,19 @@ import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 
 const paths = {
+    assets: 'assets',
     dist: 'dist',
 };
 const jsPaths = {
-    source: 'src/**/*.js',
-    entry: 'src/entry.js',
+    source: `${paths.assets}/src/**/*.js`,
+    entry: `${paths.assets}/src/entry.js`,
     distBundle: `${paths.dist}/main-bundle.js?(.map)`,
     gulpfile: 'gulpfile.babel.js',
     webpackfile: 'webpack.config.babel.js',
 
 };
 const sassPaths = {
-    source: 'styles/**/*.scss',
+    source: `${paths.assets}/scss/**/*.scss`,
     dist: `${paths.dist}/styles`,
 };
 
