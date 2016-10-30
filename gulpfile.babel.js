@@ -2,47 +2,66 @@
 /* eslint-disable no-console */
 
 import gulp from 'gulp';
-import sass from 'ulp-sass';
+import sass from 'gulp-sass';
 import eslint from 'gulp-eslint';
 import del from 'del';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 
 const paths = {
-    allSrcJs: 'src/**/*.js',
-    srcEntryPoint: 'src/entry.js',
-    gulpFile: 'gulpfile.babel.js',
-    webpackFile: 'webpack.config.babel.js',
-    distDir: 'dist',
-    distMainBundle: 'dist/main-bundle.js?(.map)',
+    dist: 'dist',
+};
+const jsPaths = {
+    source: 'src/**/*.js',
+    entry: 'src/entry.js',
+    distBundle: `${paths.dist}/main-bundle.js?(.map)`,
+    gulpfile: 'gulpfile.babel.js',
+    webpackfile: 'webpack.config.babel.js',
+
+};
+const sassPaths = {
+    source: 'styles/**/*.scss',
+    dist: `${paths.dist}/styles`,
 };
 
+
+// SCSS
+gulp.task('sass', () =>
+    gulp.src(sassPaths.source)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(sassPaths.dist))
+);
+
+
 // JavaScript
-gulp.task('lint', () =>
+gulp.task('js:lint', () =>
     gulp.src([
-        paths.allSrcJs,
-        paths.gulpFile,
-        paths.webpackFile,
+        jsPaths.source,
+        jsPaths.gulpfile,
+        jsPaths.webpackfile,
     ])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError())
 );
 
-gulp.task('clean', () =>
+gulp.task('js:clean', () =>
     del([
-        paths.distMainBundle,
+        jsPaths.distBundle,
     ])
 );
 
-gulp.task('main', ['lint', 'clean'], () =>
-  gulp.src(paths.srcEntryPoint)
+gulp.task('js:main', ['js:lint', 'js:clean'], () =>
+  gulp.src(jsPaths.entry)
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest(paths.distDir))
+    .pipe(gulp.dest(paths.dist))
 );
 
+
+// General
 gulp.task('watch', () => {
-    gulp.watch(paths.allSrcJs, ['main']);
+    gulp.watch(jsPaths.source, ['js:main']);
+    gulp.watch(sassPaths.source, ['sass']);
 });
 
-gulp.task('default', ['watch', 'main']);
+gulp.task('default', ['watch', 'js:main', 'sass']);
