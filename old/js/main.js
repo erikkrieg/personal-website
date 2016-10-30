@@ -6,33 +6,33 @@ if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
 	$window.scrollTop(0); 
 }
 
-if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-	$(document).ready(function() {
+// if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+// 	$(document).ready(function() {
 
 		
-		var paraSections = $('section[data-type="background"]');
+// 		var paraSections = $('section[data-type="background"]');
 
 
-		//Code to create Parallax effect
-		paraSections.each(function() {
+// 		//Code to create Parallax effect
+// 		paraSections.each(function() {
 			
-			var bgObject = $(this);
-			bgObject.css({ backgroundPosition: '50% ' + -( $window.scrollTop() - bgObject.offset().top ) + 'px' });
+// 			var bgObject = $(this);
+// 			bgObject.css({ backgroundPosition: '50% ' + -( $window.scrollTop() - bgObject.offset().top ) + 'px' });
 
-			$window.scroll(function() {
+// 			$window.scroll(function() {
 
-				//divides distance from top of window by the obj's speed attr and stores the value
-				var yPos = -( ( $window.scrollTop() - bgObject.offset().top ) / bgObject.data('speed')); 	
-				//creates coordinates for a new css background position rule
-				var coords = '50% '+ yPos + 'px';							
-				//sets the new style rule								
-				bgObject.css({ backgroundPosition: coords });				
+// 				//divides distance from top of window by the obj's speed attr and stores the value
+// 				var yPos = -( ( $window.scrollTop() - bgObject.offset().top ) / bgObject.data('speed')); 	
+// 				//creates coordinates for a new css background position rule
+// 				var coords = '50% '+ yPos + 'px';							
+// 				//sets the new style rule								
+// 				bgObject.css({ backgroundPosition: coords });				
 
-			});
+// 			});
 
-		});
-	});
-}
+// 		});
+// 	});
+// }
 
 //Scroll to anchor 
 $('a.scrollTo').click(function(){
