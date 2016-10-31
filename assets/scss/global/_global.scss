@@ -45,19 +45,21 @@
 
 
 
+    .foreground-section {
+        position: relative;
+        box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        z-index: 1;
+    }
 
-
-	.parallax-bg {
+	.parallax-section {
         position: relative;
         min-height: 800px;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 0;
         background-attachment: fixed;
-
-        &--blasted {
-            background-image: url(../img/blasted.jpg);
-        }
+        &--blasted { background-image: url(../img/blasted.jpg); }
+        &--sky { background-image: url(../img/sky3.jpg); }
     }
 
 
