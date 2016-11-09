@@ -1,19 +1,24 @@
 @at-root {	
 
+    @include selection($color-white, $color-keppel);
+
+    * {
+        @include box-sizing(inherit);
+    }
+
+
+    body {
+        @include box-sizing();
+        font-size: $font-size-base;
+        font-family: $font-family-primary;
+    }
+
+
+    // Headings
+    //-------------------
+
 	%heading {
 		font-family: $font-family-secondary;
-	}
-
-	* {
-		@include box-sizing(inherit);
-	}
-
-	@include selection($color-white, $color-keppel);
-
-	body {
-		@include box-sizing();
-		font-size: $font-size-base;
-		font-family: $font-family-primary;
 	}
 
 	h1 {
@@ -45,6 +50,23 @@
 
 
 
+
+
+
+
+
+    // TODO: move these to another file
+
+
+    .hero-heading {
+        color: $color-white;
+        text-align: center;
+    }
+
+    .section {
+        min-height: 100vh;
+    }
+
     .foreground-section {
         position: relative;
         box-shadow: 0 0 50px rgba(0,0,0,0.8);
@@ -60,6 +82,25 @@
         background-attachment: fixed;
         &--blasted { background-image: url(../img/blasted.jpg); }
         &--sky { background-image: url(../img/sky3.jpg); }
+    }
+
+
+    .profile-pic {
+        position: relative;
+        border: 7px solid #8dde5b;
+        width: 230px;
+        height: 230px;
+        margin: auto;
+        border-radius: 100%;
+        overflow: hidden;
+        z-index: 2;
+    }
+
+    .profile-pic__glitch-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
     }
 
 
