@@ -86,21 +86,19 @@
 
     .profile-pic {
         position: relative;
-        border: 7px solid #8dde5b;
+        border: 7px solid $color-conifer;
         width: 230px;
         height: 230px;
         margin: auto;
         border-radius: 100%;
         overflow: hidden;
         z-index: 2;
+
+        &__glitch-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
     }
-
-    .profile-pic__glitch-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-    }
-
-
 }
