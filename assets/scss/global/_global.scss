@@ -79,7 +79,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 0;
-        background-attachment: fixed;
+        //background-attachment: fixed;
         &--blasted { background-image: url(../img/blasted.jpg); }
         &--sky { background-image: url(../img/sky3.jpg); }
     }
