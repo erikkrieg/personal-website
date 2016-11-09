@@ -29,6 +29,7 @@
 	h2 {
 		@extend %heading;
 		font-size: 2.6rem;
+        font-weight: 200;
 	}
 
 	h3 {
@@ -51,10 +52,6 @@
 
 
 
-
-
-
-
     // TODO: move these to another file
 
 
@@ -66,9 +63,24 @@
     .section {
         min-height: 100vh;
         padding: 50px 0;
+    }
 
-        &__inner {
-            margin: 0 $spacing;
+    .section__container {
+        margin: 0 $spacing * 0.75;
+    }
+
+    .section__copy {
+        margin: $spacing * 0.75 0;
+    }
+
+    .section__heading {
+
+    }
+
+    .section--about {
+        .section__heading {
+            margin: $spacing * 1.25 0;
+            text-align: center;
         }
     }
 
