@@ -58,6 +58,15 @@
     .hero-heading {
         color: $color-white;
         text-align: center;
+        line-height: 1.25;
+    }
+
+    .hero-heading--primary {
+        margin: $spacing * 2 0;
+    }
+
+    .hero-heading--secondary {
+        text-transform: lowercase;
     }
 
     .section {
@@ -71,6 +80,8 @@
 
     .section__copy {
         margin: $spacing * 0.75 0;
+        color: $color-dove-grey;
+        line-height: 1.4;
     }
 
     .section__heading {
