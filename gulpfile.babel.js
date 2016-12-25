@@ -1,49 +1,68 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
 
 import gulp from 'gulp';
-// import babel from 'gulp-babel';
+import sass from 'gulp-sass';
 import eslint from 'gulp-eslint';
 import del from 'del';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 
 const paths = {
-    allSrcJs: 'src/**/*.js',
-    srcEntryPoint: 'src/entry.js',
-    gulpFile: 'gulpfile.babel.js',
-    webpackFile: 'webpack.config.babel.js',
-    distDir: 'dist',
-    distMainBundle: 'dist/main-bundle.js?(.map)',
+    assets: 'assets',
+    dist: 'dist',
+};
+const jsPaths = {
+    source: `${paths.assets}/src/**/*.js`,
+    entry: `${paths.assets}/src/entry.js`,
+    dist: `${paths.dist}/src`,
+    distBundle: `${paths.dist}/src/main-bundle.js?(.map)`,
+    gulpfile: 'gulpfile.babel.js',
+    webpackfile: 'webpack.config.babel.js',
+
+};
+const sassPaths = {
+    source: `${paths.assets}/scss/**/*.scss`,
+    dist: `${paths.dist}/css`,
 };
 
+
+// SCSS
+gulp.task('sass', () =>
+    gulp.src(sassPaths.source)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(sassPaths.dist))
+);
+
+
 // JavaScript
-gulp.task('lint', () =>
+gulp.task('js:lint', () =>
     gulp.src([
-        paths.allSrcJs,
-        paths.gulpFile,
-        paths.webpackFile,
+        jsPaths.source,
+        jsPaths.gulpfile,
+        jsPaths.webpackfile,
     ])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError())
 );
 
-gulp.task('clean', () =>
+gulp.task('js:clean', () =>
     del([
-        paths.libDir,
-        paths.distMainBundle,
+        jsPaths.distBundle,
     ])
 );
 
-gulp.task('main', ['lint', 'clean'], () =>
-  gulp.src(paths.srcEntryPoint)
+gulp.task('js:main', ['js:lint', 'js:clean'], () =>
+  gulp.src(jsPaths.entry)
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest(paths.distDir))
+    .pipe(gulp.dest(jsPaths.dist))
 );
 
+
+// General
 gulp.task('watch', () => {
-    gulp.watch(paths.allSrcJs, ['main']);
+    gulp.watch(jsPaths.source, ['js:main']);
+    gulp.watch(sassPaths.source, ['sass']);
 });
 
-gulp.task('default', ['watch', 'main']);
+gulp.task('default', ['watch', 'js:main', 'sass']);

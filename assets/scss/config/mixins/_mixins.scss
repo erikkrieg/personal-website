@@ -1,0 +1,18 @@
+@mixin box-sizing($value: border-box) {
+	-moz-box-sizing: $value;
+	box-sizing: $value;
+}
+
+@mixin selection($color, $color-background) {
+	/* Safari */ 
+	::selection { 
+		color: $color; 
+		background: $color-background; 
+	}
+
+	/* Firefox */
+	::-moz-selection {
+		color: $color; 
+		background: $color-background; 
+	}
+}
