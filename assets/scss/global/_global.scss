@@ -50,6 +50,24 @@
 	}
 
 
+    // Links
+    //-------------------
+
+    a {
+        text-decoration: none;
+        outline: none;
+
+        &:hover,
+        &:visited {
+            color: $color-keppel;
+        }
+
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+
 
 
     // TODO: move these to another file
@@ -104,6 +122,8 @@
 
     .section--footer {
         min-height: auto;
+        text-align: center;
+        color: $color-dove-grey;
     }
 
     .foreground-section {
