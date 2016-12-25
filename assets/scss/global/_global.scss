@@ -85,13 +85,20 @@
     }
 
     .section__heading {
-
+        font-size: 2.2rem;
     }
 
     .section--about {
         .section__heading {
             margin: $spacing * 1.25 0;
             text-align: center;
+        }
+    }
+
+    .section--portfolio {
+        .section__heading {
+            margin: $spacing * 1.25 0;
+            color: $color-white;
         }
     }
 
