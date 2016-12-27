@@ -9,6 +9,7 @@ import del from 'del';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import newer from 'gulp-newer';
+import runSequence from 'run-sequence';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 
@@ -52,24 +53,23 @@ gulp.task('browser-sync', () => {
 });
 
 
-// HTML
-gulp.task('html', ['html:clean'], () =>
-    gulp.src(htmlPaths.source)
-        .pipe(gulp.dest(htmlPaths.dist))
-);
-
-gulp.task('html:clean', () =>
+// Clean
+gulp.task('clean', () =>
     del.sync([
-        `${htmlPaths.dist}**`,
+        `${paths.dist}/**/*`,
         `!${paths.dist}`,
-        `!${jsPaths.dist}`,
-        `!${sassPaths.dist}`,
-        `!${imgPaths.dist}`,
     ])
 );
 
 
-// IMG
+// HTML
+gulp.task('html', () =>
+    gulp.src(htmlPaths.source)
+        .pipe(gulp.dest(htmlPaths.dist))
+);
+
+
+// Images
 gulp.task('img', () =>
     gulp.src(imgPaths.source)
         .pipe(newer(imgPaths.dist))
@@ -77,12 +77,8 @@ gulp.task('img', () =>
         .pipe(gulp.dest(imgPaths.dist))
 );
 
-gulp.task('img:clean', () =>
-    del.sync([`${imgPaths.dist}/**`, `!${imgPaths.dist}`])
-);
 
-
-// SCSS
+// Sass
 gulp.task('sass', () =>
     gulp.src(sassPaths.source)
         .pipe(sassGlob())
@@ -129,8 +125,14 @@ gulp.task('watch', () => {
     gulp.watch(imgPaths.source, ['img']);
 });
 
-gulp.task('build', ['html', 'img', 'js:main', 'sass']);
+gulp.task('build', callback =>
+    runSequence(
+        'clean',
+        ['html', 'img', 'js:main', 'sass'],
+        callback
+    )
+);
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['html', 'img', 'js:main', 'sass', 'watch']);
 
 gulp.task('sync', ['default', 'browser-sync']);
