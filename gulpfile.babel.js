@@ -4,9 +4,11 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import sassGlob from 'gulp-sass-glob';
 import eslint from 'gulp-eslint';
+import imagemin from 'gulp-imagemin';
 import del from 'del';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
+import newer from 'gulp-newer';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 
@@ -18,6 +20,10 @@ const paths = {
 const htmlPaths = {
     source: `${paths.assets}/pages/**/*.html`,
     dist: `${paths.dist}/`,
+};
+const imgPaths = {
+    source: `${paths.assets}/img/**/*`,
+    dist: `${paths.dist}/img`,
 };
 const jsPaths = {
     source: `${paths.assets}/src/**/*.js`,
@@ -53,13 +59,26 @@ gulp.task('html', ['html:clean'], () =>
 );
 
 gulp.task('html:clean', () =>
-    del([
+    del.sync([
         `${htmlPaths.dist}**`,
         `!${paths.dist}`,
         `!${jsPaths.dist}`,
         `!${sassPaths.dist}`,
-        `!${paths.dist}/img`,
+        `!${imgPaths.dist}`,
     ])
+);
+
+
+// IMG
+gulp.task('img', () =>
+    gulp.src(imgPaths.source)
+        .pipe(newer(imgPaths.dist))
+        .pipe(imagemin())
+        .pipe(gulp.dest(imgPaths.dist))
+);
+
+gulp.task('img:clean', () =>
+    del.sync([`${imgPaths.dist}/**`, `!${imgPaths.dist}`])
 );
 
 
@@ -107,8 +126,9 @@ gulp.task('watch', () => {
     gulp.watch(jsPaths.source, ['js:main']);
     gulp.watch(sassPaths.source, ['sass']);
     gulp.watch(htmlPaths.source, ['html']);
+    gulp.watch(imgPaths.source, ['img']);
 });
 
-gulp.task('default', ['watch', 'html', 'js:main', 'sass']);
+gulp.task('default', ['watch', 'html', 'img', 'js:main', 'sass']);
 
 gulp.task('sync', ['default', 'browser-sync']);
