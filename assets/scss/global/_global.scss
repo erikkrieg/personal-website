@@ -85,7 +85,7 @@
     }
 
     .hero-heading--primary {
-        margin: $spacing * 2 0;
+        margin: 0 0 $spacing * 2 0;
     }
 
     .hero-heading--secondary {
@@ -97,9 +97,14 @@
         padding: 50px 0;
     }
 
-    .section__nav {
+    .page-nav {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: $spacing;
         color: $color-white;
         text-align: center;
+        z-index: 1;
 
         a {
             display: inline-block;
@@ -127,6 +132,12 @@
 
     .section__heading {
         font-size: 2.2rem;
+    }
+
+    .section--center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .section--about {
@@ -161,7 +172,10 @@
         background-repeat: no-repeat;
         background-position: 50% 0;
         //background-attachment: fixed;
-        &--blasted { background-image: url(../img/blasted.jpg); }
+        &--blasted { 
+            background-image: url(../img/blasted.jpg); 
+            background-position: 60% 0;
+        }
         &--sky { background-image: url(../img/sky3.jpg); }
     }
 
