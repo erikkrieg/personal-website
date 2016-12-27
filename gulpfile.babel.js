@@ -8,7 +8,9 @@ import del from 'del';
 import autoprefixer from 'gulp-autoprefixer';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
+import browserSync from 'browser-sync';
 
+const bs = browserSync.create();
 const paths = {
     assets: 'assets',
     dist: 'dist',
@@ -26,6 +28,16 @@ const sassPaths = {
     source: `${paths.assets}/scss/**/*.scss`,
     dist: `${paths.dist}/css`,
 };
+
+
+// Browser-sync
+gulp.task('browser-sync', () =>
+    browserSync.init({
+        server: {
+            baseDir: './dist/',
+        },
+    })
+);
 
 
 // SCSS
