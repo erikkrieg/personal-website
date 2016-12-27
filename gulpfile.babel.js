@@ -129,6 +129,8 @@ gulp.task('watch', () => {
     gulp.watch(imgPaths.source, ['img']);
 });
 
-gulp.task('default', ['html', 'img', 'js:main', 'sass', 'watch']);
+gulp.task('build', ['html', 'img', 'js:main', 'sass']);
+
+gulp.task('default', ['build', 'watch']);
 
 gulp.task('sync', ['default', 'browser-sync']);
