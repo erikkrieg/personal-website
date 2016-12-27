@@ -6,11 +6,11 @@ import sassGlob from 'gulp-sass-glob';
 import eslint from 'gulp-eslint';
 import del from 'del';
 import autoprefixer from 'gulp-autoprefixer';
+import browserSync from 'browser-sync';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
-import browserSync from 'browser-sync';
 
-const bs = browserSync.create();
+const sync = browserSync.create();
 const paths = {
     assets: 'assets',
     dist: 'dist',
@@ -32,7 +32,7 @@ const sassPaths = {
 
 // Browser-sync
 gulp.task('browser-sync', () =>
-    browserSync.init({
+    sync.init({
         server: {
             baseDir: './dist/',
         },
@@ -50,6 +50,7 @@ gulp.task('sass', () =>
             cascade: false,
         }))
         .pipe(gulp.dest(sassPaths.dist))
+        .pipe(sync.stream())
 );
 
 
@@ -85,3 +86,5 @@ gulp.task('watch', () => {
 });
 
 gulp.task('default', ['watch', 'js:main', 'sass']);
+
+gulp.task('sync', ['default', 'browser-sync']);
