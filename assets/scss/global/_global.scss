@@ -8,12 +8,12 @@
     }
 
     * {
-        @include box-sizing(inherit);
+        box-sizing: inherit;
     }
 
 
     body {
-        @include box-sizing();
+        box-sizing: border-box;
         font-size: $font-size-base;
         font-family: $font-family-primary;
     }
