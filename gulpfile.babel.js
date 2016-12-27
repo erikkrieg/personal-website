@@ -4,6 +4,7 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import eslint from 'gulp-eslint';
 import del from 'del';
+import autoprefixer from 'gulp-autoprefixer';
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 
@@ -30,6 +31,10 @@ const sassPaths = {
 gulp.task('sass', () =>
     gulp.src(sassPaths.source)
         .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false,
+        }))
         .pipe(gulp.dest(sassPaths.dist))
 );
 
