@@ -56,9 +56,14 @@
     a {
         text-decoration: none;
         outline: none;
+        color: inherit;
 
-        &:hover,
+
         &:visited {
+            color: inherit;
+        }
+
+        &:hover {
             color: $color-keppel;
         }
 
@@ -90,6 +95,24 @@
     .section {
         min-height: 100vh;
         padding: 50px 0;
+    }
+
+    .section__nav {
+        color: $color-white;
+        text-align: center;
+
+        a {
+            display: inline-block;
+            padding: $spacing / 2;
+            margin: 0 $spacing / 2;
+            text-decoration: none;
+            background-color: rgba($color-pink, 0.5);
+
+            &:hover {
+                color: inherit;
+                background-color: rgba($color-pink, 0.6);
+            }
+        }
     }
 
     .section__container {
