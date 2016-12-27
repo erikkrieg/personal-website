@@ -1,6 +1,11 @@
 @at-root {	
 
-    @include selection($color-white, $color-keppel);
+    // @include selection($color-white, $color-keppel);
+
+    ::selection { 
+        color: $color-white; 
+        background: $color-keppel; 
+    }
 
     * {
         @include box-sizing(inherit);
