@@ -15,7 +15,7 @@ import webpackConfig from './webpack.config.babel';
 
 const sync = browserSync.create();
 const paths = {
-    assets: 'assets',
+    assets: 'src',
     dist: 'dist',
 };
 const htmlPaths = {
@@ -27,10 +27,10 @@ const imgPaths = {
     dist: `${paths.dist}/img`,
 };
 const jsPaths = {
-    source: `${paths.assets}/src/**/*.js`,
-    entry: `${paths.assets}/src/entry.js`,
-    dist: `${paths.dist}/src`,
-    distBundle: `${paths.dist}/src/main-bundle.js?(.map)`,
+    source: `${paths.assets}/js/**/*.js`,
+    entry: `${paths.assets}/js/entry.js`,
+    dist: `${paths.dist}/js`,
+    distBundle: `${paths.dist}/js/main-bundle.js?(.map)`,
     gulpfile: 'gulpfile.babel.js',
     webpackfile: 'webpack.config.babel.js',
 

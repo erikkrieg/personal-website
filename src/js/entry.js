@@ -1,4 +1,4 @@
-import Dog from '../src/dog';
+import Dog from './dog';
 
 const browserToby = new Dog('Browser Toby');
 
