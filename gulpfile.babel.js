@@ -31,13 +31,15 @@ const sassPaths = {
 
 
 // Browser-sync
-gulp.task('browser-sync', () =>
+gulp.task('browser-sync', () => {
+    const path = './dist/';
     sync.init({
         server: {
-            baseDir: './dist/',
+            baseDir: path,
         },
-    })
-);
+    });
+    gulp.watch(`${path}*.html`).on('change', sync.reload);
+});
 
 
 // SCSS
