@@ -1,3 +1,5 @@
-@import 'vendor/reset';
-@import 'config/config';
-@import 'global/global';
+@import 'vendor/**/*.scss';
+@import 'config/**/*.scss';
+@import 'global/**/*.scss';
+
+@import 'components/**/*.scss';

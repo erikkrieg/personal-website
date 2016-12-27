@@ -2,6 +2,7 @@
 
 import gulp from 'gulp';
 import sass from 'gulp-sass';
+import sassGlob from 'gulp-sass-glob';
 import eslint from 'gulp-eslint';
 import del from 'del';
 import autoprefixer from 'gulp-autoprefixer';
@@ -30,6 +31,7 @@ const sassPaths = {
 // SCSS
 gulp.task('sass', () =>
     gulp.src(sassPaths.source)
+        .pipe(sassGlob())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
