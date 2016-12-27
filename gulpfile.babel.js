@@ -15,6 +15,10 @@ const paths = {
     assets: 'assets',
     dist: 'dist',
 };
+const htmlPaths = {
+    source: `${paths.assets}/pages/**/*.html`,
+    dist: `${paths.dist}/`,
+};
 const jsPaths = {
     source: `${paths.assets}/src/**/*.js`,
     entry: `${paths.assets}/src/entry.js`,
@@ -40,6 +44,23 @@ gulp.task('browser-sync', () => {
     });
     gulp.watch(`${path}*.html`).on('change', sync.reload);
 });
+
+
+// HTML
+gulp.task('html', ['html:clean'], () =>
+    gulp.src(htmlPaths.source)
+        .pipe(gulp.dest(htmlPaths.dist))
+);
+
+gulp.task('html:clean', () =>
+    del([
+        `${htmlPaths.dist}**`,
+        `!${paths.dist}`,
+        `!${jsPaths.dist}`,
+        `!${sassPaths.dist}`,
+        `!${paths.dist}/img`,
+    ])
+);
 
 
 // SCSS
@@ -85,8 +106,9 @@ gulp.task('js:main', ['js:lint', 'js:clean'], () =>
 gulp.task('watch', () => {
     gulp.watch(jsPaths.source, ['js:main']);
     gulp.watch(sassPaths.source, ['sass']);
+    gulp.watch(htmlPaths.source, ['html']);
 });
 
-gulp.task('default', ['watch', 'js:main', 'sass']);
+gulp.task('default', ['watch', 'html', 'js:main', 'sass']);
 
 gulp.task('sync', ['default', 'browser-sync']);
