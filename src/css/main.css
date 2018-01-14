@@ -56,7 +56,7 @@ main {
 
 .hero__outer {
   display: flex;
-  background-image: url(../img/outer-space.jpg);
+  background-image: url(../images/outer-space.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
