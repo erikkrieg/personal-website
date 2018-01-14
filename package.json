@@ -4,7 +4,7 @@
   "description": "Erik Krieg's personal website.",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1" 
+    "deploy": "aws s3 sync src/. s3://erikkrieg.com --profile personal-website" 
   },
   "author": "Erik Krieg <erik.c.krieg@gmail.com>",
   "license": "ISC"
