@@ -9,13 +9,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "aws s3 sync --content-encoding 'gzip' --delete --profile personal-website dist/. s3://erikkrieg.com"
+    "deploy": "aws s3 sync --delete --profile personal-website dist/. s3://erikkrieg.com"
   },
   "author": "Erik Krieg <erik.c.krieg@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "vite": "^4.4.9",
-    "vite-plugin-compression2": "^0.10.3",
     "vite-plugin-imagemin": "^0.6.1"
   }
 }

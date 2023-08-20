@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import { compression } from "vite-plugin-compression2";
 import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig({
@@ -32,10 +31,6 @@ export default defineConfig({
           },
         ],
       },
-    }),
-    compression({
-      deleteOriginalAssets: true,
-      filename: "[path][base]",
     }),
   ],
 });
