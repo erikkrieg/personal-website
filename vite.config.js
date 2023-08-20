@@ -33,9 +33,9 @@ export default defineConfig({
         ],
       },
     }),
-    // compression({
-    //   deleteOriginalAssets: true,
-    //   filename: "[path][base]",
-    // }),
+    compression({
+      deleteOriginalAssets: true,
+      filename: "[path][base]",
+    }),
   ],
 });
