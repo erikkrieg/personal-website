@@ -40,9 +40,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Because of how we bootstrap packages, the package-lock files are not reliable
-package-lock.json
-
 # Typescript v1 declaration files
 typings/
 

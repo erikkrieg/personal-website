@@ -1,22 +1,20 @@
 {
   "name": "erikkrieg.com",
+  "private": true,
   "version": "1.0.0",
+  "type": "module",
   "description": "Erik Krieg's personal website.",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp build",
-    "deploy": "aws s3 sync --content-encoding 'gzip' --delete --profile personal-website build/. s3://erikkrieg.com",
-    "bd": "npm run build && npm run deploy"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "aws s3 sync --delete --profile personal-website dist/. s3://erikkrieg.com"
   },
   "author": "Erik Krieg <erik.c.krieg@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-awspublish": "^3.3.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^3.9.2",
-    "gulp-htmlmin": "^4.0.0",
-    "gulp-imagemin": "^4.1.0",
-    "run-sequence": "^2.2.1"
+    "vite": "^4.4.9",
+    "vite-plugin-imagemin": "^0.6.1"
   }
 }

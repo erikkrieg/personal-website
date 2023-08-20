@@ -13,7 +13,8 @@
       {
         devShells.default = mkShell {
           buildInputs = [
-            nodejs_18
+            awscli2
+            nodejs_20
           ];
         };
       }
