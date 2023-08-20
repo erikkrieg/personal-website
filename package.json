@@ -15,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^4.4.9",
-    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-compression2": "^0.10.3",
     "vite-plugin-imagemin": "^0.6.1"
   }
 }

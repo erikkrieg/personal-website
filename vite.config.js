@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import viteCompression from "vite-plugin-compression";
+import { compression } from "vite-plugin-compression2";
 import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig({
@@ -33,10 +33,9 @@ export default defineConfig({
         ],
       },
     }),
-    viteCompression({
-      // Might want to delete origin file when building to deploy to S3
-      deleteOriginFile: false,
-      filter: /\.(js|mjs|json|css|html)$/i,
-    }),
+    // compression({
+    //   deleteOriginalAssets: true,
+    //   filename: "[path][base]",
+    // }),
   ],
 });
