@@ -15,6 +15,7 @@
           buildInputs = [
             awscli2
             nodejs_20
+            pulumi
           ];
         };
       }
