@@ -154,8 +154,8 @@ main {
 /* Animation */
 
 .animate-hue {
-  -webkit-animation: filter-animation 720s infinite;
-  animation: filter-animation 720s infinite;
+  -webkit-animation: filter-animation 180s infinite;
+  animation: filter-animation 180s infinite;
 }
 
 @-webkit-keyframes filter-animation {
