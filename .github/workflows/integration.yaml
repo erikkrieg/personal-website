@@ -1,0 +1,9 @@
+name: Integration
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    - run: npm ci
+    - run: npm run build
