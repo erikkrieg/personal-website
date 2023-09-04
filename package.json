@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Erik Krieg's personal website.",
-  "main": "gulpfile.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
